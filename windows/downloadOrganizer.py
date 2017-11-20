@@ -35,14 +35,14 @@ class DirectoryListener:
 	def organize(self, content):
 		for entry in content:
 			if self.isVideo(entry.name):
-				os.rename(self.path+'/'+entry.name, '/home/'+self.user+'/Videos/'+entry.name)
+				os.rename(self.path+'/'+entry.name, 'c:/users/'+self.user+'/Videos/'+entry.name)
 			elif self.isAudio(entry.name):
 				#print("Moving Audio")
-				os.rename(self.path+'/'+entry.name, '/home/'+self.user+'/Music/'+entry.name)
+				os.rename(self.path+'/'+entry.name, 'c:/users/'+self.user+'/Music/'+entry.name)
 			elif self.isImage(entry.name):
-				os.rename(self.path+'/'+entry.name, '/home/'+self.user+'/Pictures/'+entry.name)
+				os.rename(self.path+'/'+entry.name, 'c:/users/'+self.user+'/Pictures/'+entry.name)
 			elif self.isDocument(entry.name):
-				os.rename(self.path+'/'+entry.name, '/home/'+self.user+'/Documents/'+entry.name)
+				os.rename(self.path+'/'+entry.name, 'c:/users/'+self.user+'/Documents/'+entry.name)
 			elif entry.name.endswith('.crdownload'):
 				self.count -= 1
 
@@ -77,7 +77,7 @@ class DirectoryListener:
 
 
 	def isDocument(self, name):
-		formats = ['.txt','.doc','.docx','.odt','.xml','.pdf','.rtf','.psd','.ai','.svg','.wp','.wpd','.ppt','.csv', '.pptx']
+		formats = ['.txt','.doc','.docx','.odt','.xml','.pdf','.rtf','.psd','.ai','.svg','.wp','.wpd','.ppt','.csv']
 
 		for format in formats:
 			if name.endswith(format):
@@ -88,5 +88,5 @@ class DirectoryListener:
 
 if __name__ == '__main__':
 	user = getpass.getuser()
-	listener = DirectoryListener('/home/'+user+'/Downloads')
+	listener = DirectoryListener('c:/users/'+user+'/Downloads')
 	listener.listen()
